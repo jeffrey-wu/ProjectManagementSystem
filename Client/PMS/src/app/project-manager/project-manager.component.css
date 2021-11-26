@@ -1,0 +1,29 @@
+.create-proj{
+    background-color:coral;
+}
+.proj-list-container{
+    text-align: right;
+}
+.example-card {             /*put cards in grid container*/
+    max-width: 300px;
+    margin: 30px;
+    background-color: rgb(100, 100, 100);
+    color: blanchedalmond;
+}
+.example-card:hover {             /*put cards in grid container*/
+    max-width: 300px;
+    margin: 30px;
+    background-color: rgb(192, 192, 192);
+    color: rgb(53, 53, 53);
+    transition: 0.2s;
+}
+.proj-grid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: rgb(54, 54, 54);
+}
+  
+  /* .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  } */

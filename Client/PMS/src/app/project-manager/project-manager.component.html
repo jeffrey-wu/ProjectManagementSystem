@@ -1,0 +1,115 @@
+<div *ngIf="create_toggle_bol">
+    <h1>Create Project</h1>
+    <form #p="ngForm" (ngSubmit)="createProject(p)">
+      <input
+      type="text"
+      [(ngModel)]="ProjectName"
+      name="ProjectName"
+      />
+      <button>CreateProj</button>
+    </form>
+  </div>
+  
+  <!-- ADDING MEMBERS TO PROJECT START -->
+  <!-- <h2>UserList</h2>
+  <button (click)="getUserList()">Get User List</button>
+  <ul>
+      <li *ngFor="let user of userList; let i=index">
+          {{ user.first_name }} {{ user.last_name }}
+          <button [class.active] = "i==userToAdd" (click)="addMember(i)">Add</button>
+          <button [class.active] = "i==userToRemove" (click)="removeMember(i)">Remove</button>
+      </li>
+  </ul>
+  <h2>MemberList</h2>
+  <ul>
+    <li *ngFor="let user of MemberList; let i=index">
+      {{ user.first_name }} {{ user.last_name }}
+      <button [class.active] = "i==userToRemove" (click)="removeMember(user, i)">Remove</button>
+    </li>
+  </ul>
+  <button (click)="addMembersToProject()">Add Members</button>
+  <button (click)="deleteProject()">Delete Project</button> -->
+  <!-- ADDING MEMBERS TO PROJECT END -->
+  
+  
+  
+    
+  <!-- <button *ngIf="bt" mat-raised-button color="warn" (click)="toggle1()">BACK</button> -->
+    
+  <button mat-raised-button color="primary" (click)="getProjects()">Refresh</button>
+  <button mat-raised-button color="primary" (click)="create_toggle()">Create Project</button>
+  
+  <div class="proj-grid">  <!--*ngIf="proj_list_bol"-->
+    <mat-card class="example-card" *ngFor="let proj of projectList" >
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{proj.ProjectName}}</mat-card-title>
+        <mat-card-subtitle>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" selected>Lester Dolle</mat-chip>
+            <mat-chip>Edward Waver</mat-chip>
+            <mat-chip>Eli Lark</mat-chip>
+            <mat-chip>William Borne</mat-chip>
+            <mat-chip>Dana O'Brian</mat-chip>
+          </mat-chip-list>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h>Description: </h>
+        <p>ID: ({{proj._id}})</p>
+        <p>Start date/time: ({{proj.ProjectStart}})</p>
+        <p>End date/time: ({{proj.ProjectEnd}})</p>
+        <p>Project Name: ({{proj.ProjectName}})</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="warn" (click)="deleteProject(proj)">DELETE</button>
+
+        <button mat-raised-button routerLink="{{proj._id}}">SELECT</button>
+        
+        <!-- <button mat-raised-button color="accent"  (click)="selectProj_test(proj)">SELECT</button> routerLink="proj._id" -->
+        <!-- cant route to project component when adding [routerLink]="[proj._id]" -->
+        <!-- [routerLink]="[api/Project/proj._id]" -->
+        <!-- [routerLink]="[proj._id]" -->
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <!-- <app-project [project_item]="selectedProject"></app-project> -->
+  <!-- <app-project [project_item]="selectedProject"></app-project> -->
+  <!-- [project_item]="selectedProject" -->
+  <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="first_name">
+      <th mat-header-cell *matHeaderCellDef> first_name </th>
+      <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="last_name">
+      <th mat-header-cell *matHeaderCellDef> last_name </th>
+      <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> -->
+  
+  
+  <!-- <button (click)="test1()">test</button>
+    <table>
+      <tr>
+        <th *ngFor="let cols of displayedColumns">{{cols}}</th>
+      </tr>
+      <tr *ngFor="let user of userList">
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.phone}}</td>
+      </tr>
+    </table> -->
+    
+    
+    

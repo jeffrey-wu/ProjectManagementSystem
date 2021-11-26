@@ -1,0 +1,33 @@
+.main-container{
+    display: grid;
+    grid-template-rows: 10% auto;
+    grid-template-columns: 20% auto;
+    height: 100%;
+}
+.top-nav{
+    display: grid;
+    justify-items: right;
+}
+.content{
+    grid-row: 2/3;
+    grid-column: 2/3;
+    display: grid;
+    background-color: lawngreen;
+    height: inherit;
+}
+.side-nav{
+    grid-row:2/3;
+    grid-column:1/2;
+    display: block;
+    background-color: red;
+    margin:0;
+    text-align: center;
+    height: inherit;
+}
+.nav-btn{
+    cursor: pointer;
+    padding:10px;
+    margin: 15px;
+    background-color:white;
+    font-size: 25px;
+}

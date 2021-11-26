@@ -1,0 +1,169 @@
+<!-- <h1>Register Page</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <input name="first" ngModel required #first="ngModel">
+  <input name="last" ngModel>
+  <input name="phone" ngModel>
+  <button>Submit</button>
+</form>
+
+<p>First name value: {{ first.value }}</p>
+<p>First name valid: {{ first.valid }}</p>
+<p>Form value: {{ f.value | json }}</p>
+<p>Form valid: {{ f.valid }}</p>
+
+<button (click)="getUserList()">list</button> -->
+
+
+
+<body>
+  <div class="container">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>  
+  <ul>
+      
+      <li><h1>Register Page</h1></li>
+      <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput name="first" ngModel required #first="ngModel">
+        </mat-form-field>
+      </li>
+      <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput name="last" ngModel required>
+        </mat-form-field>
+      </li><li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input matInput name="phone" ngModel required>
+        </mat-form-field>
+      </li>
+      <li><button mat-button class="bt">Register</button></li>
+    
+    </ul>
+  </form>
+</div>
+</body>
+
+<router-outlet></router-outlet>
+
+
+<!-- <ul>
+  <li *ngFor="let user of userList; let i = index">
+    {{ user._id }}
+    {{ user.first_name }}
+    {{ user.last_name }}
+    {{ user.phone }}
+    <button 
+      [class.active]  = "i == currentIndex"
+      (click)="setActiveUser(user, i)"
+    >Edit</button>
+    <button
+      (click)="deleteUser(user, i)"
+    >delete</button>
+  </li>
+  <br><br>
+</ul> -->
+
+
+<!-- START OF TEST AREA -->
+
+<!-- WORKING TABLE START -->
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="first_name">
+    <th mat-header-cell *matHeaderCellDef> first_name </th>
+    <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="last_name">
+    <th mat-header-cell *matHeaderCellDef> last_name </th>
+    <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef> phone </th>
+    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Edit">
+    <th mat-header-cell *matHeaderCellDef> Edit </th>
+    <td mat-cell *matCellDef="let element"> 
+      <button mat-flat-button color="primary" (click)="setActiveUser(element)">Edit</button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let element"> 
+      <button mat-flat-button color="warn" (click)="deleteUser(element)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->
+<!-- WORKING TABLE END -->
+
+<!-- <ul>
+  <li *ngFor="let user of userList; let i = index" >
+    {{ user._id }}
+    {{ user.first_name }}
+    {{ user.last_name }}
+    {{ user.phone }}
+    <button 
+      [class.active]  = "i == currentIndex"
+      (click)="setActiveUser(user, i)"
+    >Edit</button>
+    <button
+      (click)="deleteUser(user, i)"
+    >delete</button>
+  </li>
+  <br><br>
+</ul> -->
+
+<!-- END OF TEST AREA -->
+
+<!-- EDIT USER DETAILS START -->
+<!-- <div *ngIf="currentUser">
+  <h1>UPDATE USER</h1>
+  <form #e="ngForm" (ngSubmit)="updateUser(e)" novalidate>
+    <input
+    type="text"
+    [(ngModel)]="currentUser.first_name"
+    name="first_name"
+    />   
+    <input
+    type="text"
+    [(ngModel)]="currentUser.last_name"
+    name="last_name"
+    />
+    <input
+    type="text"
+    [(ngModel)]="currentUser.phone"
+    name="phone"
+    /> 
+    
+    <button>Submit</button>
+  </form>
+</div> -->
+<!-- EDIT USER DETAILS END -->
+
+<!-- HAVE DELETE IN LIST NOT IN FORM FORMAT  -->
+
+<!-- <h1>Delete User</h1>
+<h3>First name</h3>
+<form #d="ngForm" (ngSubmit)="deleteUser(d)">
+  <p>first name</p>
+  <input type="text" name="first_name">
+<br>
+  <p>last name</p>
+  <input type="text" name="last_name">
+  <br>
+  <button>Confirm Delete</button>
+</form> -->

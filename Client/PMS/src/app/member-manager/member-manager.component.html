@@ -1,0 +1,33 @@
+<!-- BEGIN list of members -->
+<!-- maybe make component specificly for adding members -->
+<h1>Project name: {{currentProj}}</h1>
+<h2>Member List</h2>
+<button mat-button color="primary" (click)="getMembers()">refresh members</button>
+<ul>
+    <li *ngFor="let m of memberList">
+        {{m.first_name}}
+        {{m.last_name}}
+        <button mat-button color="Accent" (click)="removeMember(m)">remove</button>
+
+    </li>
+</ul>
+<ul>
+    <h2>UserList</h2>
+    <h3>(hardcoding search list)</h3>
+    <li *ngFor="let user of userList">
+        {{user._id}}
+        {{user.first_name}}
+        {{user.last_name}}
+        {{user.phone}}
+
+        <button mat-button color="Accent" (click)="addMember(user)">add</button>
+        <button mat-button color="Accent" (click)="removeMember(user)">remove</button>
+    </li>
+</ul>
+<!-- END list of members -->
+
+<mat-form-field appearance="fill" color="Accent">
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+</mat-form-field>

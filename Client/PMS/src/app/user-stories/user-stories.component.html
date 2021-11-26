@@ -1,0 +1,67 @@
+<h1>User Stories</h1>
+<form #us="ngForm" (ngSubmit)="createUS(us)">
+    <p>User Story</p>
+    <input type="text" name="userStory" ngModel required #first="ngModel"><br>
+    
+    <p>Description</p>
+    <input type="text" name="descr" ngModel><br>
+
+    <p>Difficulty</p>
+    <input type="text" name="diff" ngModel><br>
+
+    <p>Time</p>
+    <input type="text" name="time" ngModel><br>
+
+    <p>Priority</p>
+    <input type="text" name="prio" ngModel>
+    <button>Create User-Story</button>
+</form>
+<br>
+<button (click)="getUSList()">Get USERSTORY LIST</button>
+<!-- <button mat-button (click)="getProjUS()">refresh User Story List</button> -->
+<ul>
+    <li *ngFor="let us of userStoryList; let i = index">
+        <p>UserStory ID: {{ us._id }}</p>
+        <p>UserStory Title: {{ us.UserStory }}</p>
+        <p>Description: {{ us.Description }}</p>
+        <p>Difficulty: {{ us.Difficulty }}</p>
+        <p>Time: {{ us.Time }}</p>
+        <p>Priority: {{ us.Priority }}</p>
+        <p>ProjectID: {{ us.ProjectID }}</p>
+        
+        <button [class.active] = "i==currentIndex" (click)="setActiveUserStory(us,i)">Edit</button>
+        <button (click)="deleteUS(us,i)">Delete</button>
+    </li>
+</ul>
+
+<div *ngIf="currentUS">
+    <h1>UPDATE USERSTORY</h1>
+    <form #us="ngForm" (ngSubmit)="updateUS(us)" novalidate>
+        <input
+        type="text"
+        [(ngModel)]="currentUS.UserStory"
+        name="UserStory"
+        />
+        <input
+        type="text"
+        [(ngModel)]="currentUS.Description"
+        name="Description"
+        />
+        <input
+        type="text"
+        [(ngModel)]="currentUS.Difficulty"
+        name="Difficulty"
+        />
+        <input
+        type="text"
+        [(ngModel)]="currentUS.Time"
+        name="Time"
+        />
+        <input
+        type="text"
+        [(ngModel)]="currentUS.Priority"
+        name="Priority"
+        />
+        <button>Submit changes</button>
+    </form>
+</div>

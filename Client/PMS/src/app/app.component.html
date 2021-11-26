@@ -1,0 +1,26 @@
+<!-- <mat-slider min="1" max="100" step="1" value="1"></mat-slider> -->
+<!-- <app-register></app-register> -->
+<!-- <app-user-stories></app-user-stories> -->
+<!-- <br> -->
+<!-- <app-project></app-project> -->
+<div class="main-container">
+    <div class="top-nav">
+        <div>sign out</div>
+    </div>
+    <div class="side-nav">
+        <div class="nav-btn" routerLink="api/Projects/">Workplace</div>
+        <div class="nav-btn" routerLink="api/userList/">Account</div>
+        <div class="nav-btn" routerLink="/settings">Settings</div>
+        <div class="nav-btn" routerLink="/help">Help</div>
+    </div>
+    
+    <!-- OPTION_1 (when contained in div, fat chuck appears in above router-outlet items ) -->
+    <!-- <div class="content">
+        <router-outlet></router-outlet>
+    </div> -->
+
+    <!-- OPTION_2 (when removed it appears to fill the remaining space)-->
+    <router-outlet></router-outlet>
+    
+
+</div>

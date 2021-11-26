@@ -1,0 +1,24 @@
+<div class="cont">
+  <div>this is ProjectComponent</div>
+  <mat-tab-group color="accent" background-color="accent">
+    <mat-tab label="UserStories">
+        <app-user-stories [proj_id]="project_item"></app-user-stories>
+    </mat-tab>
+    <mat-tab label="Members">
+        <app-member-manager [currentProj]="project_item" [memberList]="memberList"></app-member-manager>
+    </mat-tab>
+    <mat-tab label={{lookyhere}}> Content 1 </mat-tab>
+    <mat-tab label="Sprint 2"> Content 2 </mat-tab>
+    <mat-tab label="+Create Sprint"> Content 3 </mat-tab>
+  </mat-tab-group>
+
+  <!-- <div *ngIf="project_item">
+
+    <h2>{{project_item.ProjectName | uppercase}}</h2>
+    <div><span>id: </span>{{project_item._id}}</div>
+  
+  </div>
+  <button (click)="goBack()">go back</button> -->
+<button (click)="test()">test</button>
+<button (click)="goBack()">go back</button>
+
