@@ -92,11 +92,11 @@ export class UserStoriesComponent implements OnInit {
     this.setActiveUserStory(user,i)
     const userStoryID = this.currentUS._id
     const projID = this.proj_id
-    const USID = "US_D"
+    const UpdateTypeID = "US_D"
     console.log("Item Id: "+this.currentUS._id+"\nProcess: Delete\nLocation: Angular\nSuccess: TRUE")
     //need "data" to be read from backend
     const data={
-      UpdateType: USID,
+      UpdateType: UpdateTypeID,
       userStoryID: userStoryID
     }
     
@@ -115,7 +115,7 @@ export class UserStoriesComponent implements OnInit {
         data => {
           console.log("Project id: "+projID+"\nUpdated in angular")
         }
-      )    
+      )
   }
 
   updateUS(f: NgForm): void{
@@ -126,6 +126,15 @@ export class UserStoriesComponent implements OnInit {
       Time: f.value.Time,
       Priority: f.value.Priority
     }
+    const projID = this.proj_id
+    const US_ID = this.currentUS._id
+    const UpdateTypeID = "P_U"
+    const data1={
+      UpdateType: UpdateTypeID,
+      userStoryID: US_ID,
+      data: data
+    }
+
     this.service.updateUS(this.currentUS._id, data)
     .subscribe(
       data => {
@@ -135,5 +144,12 @@ export class UserStoriesComponent implements OnInit {
         console.log("Error in angular update "+err)
       }
     )
+
+    this.service.updateProject(projID, data1)
+      .subscribe(
+        data => {
+          console.log("Project id: "+projID+"\nUpdated in angular")
+        }
+      )
   }
 }

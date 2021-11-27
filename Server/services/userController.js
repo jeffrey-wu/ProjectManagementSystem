@@ -96,11 +96,6 @@ function updateUser(req, res) {
     console.log("5"+req.body.first_name)
 
 
-    // console.log("4"+JSON.stringify(req.params));
-    // console.log("7"+req.id)
-    // console.log("8"+req.id)
-    // console.log("9"+req.id)
-    // console.log("10"+req.id)
   }
   catch(err){
     console.log("Error in Express update: "+err)

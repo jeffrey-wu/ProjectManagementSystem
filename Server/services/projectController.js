@@ -40,6 +40,7 @@ function updateProj_US(req,res){
   Project.findById(req.params.id).then( proj => {
     const targetUS = JSON.stringify(req.body.userStoryID)
     const USlist = proj.ProjectUserStories
+    
     let found = false
     let i = 0
     
@@ -160,6 +161,69 @@ function updateProj_US(req,res){
 //   })
 // }
 
+function updateProj_P(req,res){
+  Project.findById(req.params.id).then( proj => {
+    const USlist = proj.ProjectUserStories
+    const targetUS = JSON.stringify(req.body.userStoryID)
+
+    let found = false
+    let i = 0
+
+    while(found == false){
+      console.log("in")
+      if(JSON.stringify(USlist[i]._id).localeCompare(targetUS) == 1 || JSON.stringify(USlist[i]._id).localeCompare(targetUS) == -1){
+        i++
+        console.log("Current_USID: "+JSON.stringify(USlist[i]._id)+" != Target_USID"+targetUS+" "+found+" "+i)
+      }
+      else if(JSON.stringify(USlist[i]._id).localeCompare(targetUS) == 0){
+        found = true
+        console.log("Current_USID: "+JSON.stringify(USlist[i]._id)+" == Target_USID"+targetUS+" "+found+" "+i)
+      }
+      else{
+        console.log("something went wrong")
+      }
+    }
+
+    //updated item here
+    const updatedItem = {
+      _id: req.body.userStoryID,
+      UserStory: req.body.data.UserStory,
+      Description: req.body.data.Description,
+      Difficulty: req.body.data.Difficulty,
+      Time: req.body.data.Time,
+      Priority: req.body.data.Priority,
+      ProjectID: proj._id
+    }
+
+    //adding updated item in new array
+    USlist.splice(i, 1, updatedItem)    //replace item in array (check if 0 or something)
+
+    //inserting new list into proj
+    const updatedProj = {
+      _id: proj._id,
+      ProjectUserStories: USlist,
+      Members: proj.Members,
+      ProjectName: proj.ProjectName,
+      ProjectStart: proj.ProjectStart,
+      ProjectEnd: proj.ProjectEnd
+    }
+
+    Project.findByIdAndUpdate(req.params.id, updatedProj, {useFindAndModify: false}).then( proj => {
+      console.log("Project Update success")
+    }).catch(err => {
+      console.log("Error Domain: projectController (express)\nError location: PROJ_UPDATE (P_U)\nError description: "+err)
+    })
+  }).catch(err => {
+    console.log(err)
+    })
+
+  // Project.findByIdAndUpdate(req.params.id, data, {userFindAndModify: false}).then( proj => {
+  //   console.log("Project Update success")
+  // }).catch(err => {
+  //   console.log("Error Domain: projectController (express)\nError location: PROJ_UPDATE (P_U)\nError description: "+err)
+  // })
+}
+
 function updateProject(req,res) {
 
   const type = req.body.UpdateType
@@ -169,16 +233,7 @@ function updateProject(req,res) {
   //type == P_U
   //P_U SECTION INCOMPLETE
   if(type.localeCompare("P_U") == 0){
-    // const data = {
-    //   ProjectID: req.body.ProjectID,
-    //   ProjectName: req.body.ProjectName
-    //   etc.....
-    // }
-    Project.findByIdAndUpdate(req.params.id, data, {userFindAndModify: false}).then( proj => {
-      console.log("Project Update success")
-    }).catch(err => {
-      console.log("Error Domain: projectController (express)\nError location: PROJ_UPDATE (P_U)\nError description: "+err)
-    })
+    updateProj_P(req)
   }
   //type == US_D
   //ALL OF US_D IS WORKING
