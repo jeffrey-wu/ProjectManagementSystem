@@ -11,6 +11,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 // import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +23,8 @@ import { UserStoriesComponent } from './user-stories/user-stories.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectManagerComponent } from './project-manager/project-manager.component';
 import { MemberManagerComponent } from './member-manager/member-manager.component';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { UserFilterPipe } from './member-manager/user-filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     UserStoriesComponent,
     ProjectComponent,
     ProjectManagerComponent,
-    MemberManagerComponent
+    MemberManagerComponent,
+    UserFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     MatChipsModule,
     MatTooltipModule,
     MatTabsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

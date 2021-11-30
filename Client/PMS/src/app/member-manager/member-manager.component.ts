@@ -12,9 +12,10 @@ import { ServiceService } from '../service/service.service';
 export class MemberManagerComponent implements OnInit {
   @Input() memberList: [User]
   @Input() currentProj
-  userList
+  userList: any[]
   email = new FormControl('', [Validators.required, Validators.email]);
   targetUser: string
+  searchText: string
 
   constructor(private service: ServiceService) { }
 

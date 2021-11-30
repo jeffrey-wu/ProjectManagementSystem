@@ -11,9 +11,35 @@
 
     </li>
 </ul>
-<ul>
-    <h2>UserList</h2>
-    <h3>(hardcoding search list)</h3>
+
+<div>
+    <input type="text" [(ngModel)]="searchText" placeholder="Search">
+</div>
+
+<table *ngIf="(userList | userFilter: searchText).length > 0; else noResults">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>id</th>
+            <th>firstName</th>
+            <th>lastName</th>
+            <th>phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList | userFilter: searchText; let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{ user._id }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.phone }}</td>
+            <td>
+                <mat-checkbox color = "accent">Add</mat-checkbox>
+            </td>
+        </tr>
+    </tbody>
+
+    <!-- <h3>(hardcoding search list)</h3>
     <li *ngFor="let user of userList">
         {{user._id}}
         {{user.first_name}}
@@ -22,12 +48,16 @@
 
         <button mat-button color="Accent" (click)="addMember(user)">add</button>
         <button mat-button color="Accent" (click)="removeMember(user)">remove</button>
-    </li>
-</ul>
+    </li> -->
+</table>
+
+<ng-template #noResults>
+    <p>No results found for "{{searchText}}"</p>
+</ng-template>
 <!-- END list of members -->
 
-<mat-form-field appearance="fill" color="Accent">
+<!-- <mat-form-field appearance="fill" color="Accent">
     <mat-label>Enter your email</mat-label>
     <input matInput placeholder="pat@example.com" [formControl]="email" required>
     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-</mat-form-field>
+</mat-form-field> -->
